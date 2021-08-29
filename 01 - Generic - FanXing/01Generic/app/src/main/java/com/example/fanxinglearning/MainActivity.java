@@ -12,6 +12,7 @@ import com.example.fanxinglearning.demo6.Demo6Main;
 import com.example.fanxinglearning.demo7.Demo7Main;
 import com.example.fanxinglearning.demo8.Demo8Main;
 import com.example.fanxinglearning.demo8_1.Demo8_1Main;
+import com.example.fanxinglearning.demo9.Demo9Main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,5 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Demo8Main.main();
         // demo8_1
         Demo8_1Main.main();
+        // demo9
+        Demo9Main.main();
     }
 }

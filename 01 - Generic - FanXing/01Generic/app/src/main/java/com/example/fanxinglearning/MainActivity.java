@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fanxinglearning.demo10.Demo10Main;
+import com.example.fanxinglearning.demo11.Demo11Main;
 import com.example.fanxinglearning.demo2.Demo2Main;
 import com.example.fanxinglearning.demo3.Demo3Main;
 import com.example.fanxinglearning.demo4.Demo4Main;
@@ -41,5 +43,10 @@ public class MainActivity extends AppCompatActivity {
         Demo8_1Main.main();
         // demo9
         Demo9Main.main();
+
+        // demo10 泛型数组
+        Demo10Main.main();
+        // demo11 泛型与反射
+        Demo11Main.main();
     }
 }

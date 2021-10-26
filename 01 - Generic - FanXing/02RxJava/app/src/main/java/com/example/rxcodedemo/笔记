@@ -1,0 +1,10 @@
+okHttp --> 网路请求 明确的需求
+Glide --> 图片加载
+
+rxJava 响应式流思想
+   并不明确需求，但是它改变我们的编程思维
+       同时提升效率 （关键）
+       梳理我们的思路 （附加辅助）
+GitHub Demo : https://github.com/ReactiveX/RxJava
+
+Rx系列 官网： http://reactivex.io/#

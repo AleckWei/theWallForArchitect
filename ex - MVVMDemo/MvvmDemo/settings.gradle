@@ -1,0 +1,6 @@
+include ':common'
+include ':base'
+include ':news'
+include ':network'
+include ':app'
+rootProject.name = "MvvmDemo"

@@ -111,6 +111,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btnActivityDN = findViewById(R.id.btn_dn_activity);
+        btnActivityDN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DNActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void rxJavaDownloadImageAction(View view) {

@@ -1,0 +1,58 @@
+创建操作符：{
+    创建 被观察者 的各种操作符
+    create  ----------  创建一个被观察者
+    just    ----------  创建一个被观察者，并发送事件，发送的事件不可以超过10个以上
+    from 操作符 {
+        fromArray
+        fromCallable
+        fromFuture
+        fromIterable
+    }
+    defer   ----------  直到被 观察者 订阅 之后，才会创建 被观察者
+    timer   ----------  当到指定事件后就会发送一个“OL”的值给观察者
+    interval  --------  每间隔一段时间就会发送一个事件，这个事件是从0开始，不断增加1的数字
+    intervalRange  ---  可以指定发送时间的开始值和数量，其他与 interval 的功能相同
+    range   ----------  同时发送一定范围的事件序列
+    rangeLong  -------  作用同range一样，只不过数据类型为Long
+
+    empty   ----------  直接发送onComplete事件
+    never   ----------  不发送任何事件
+    error   ----------  发送error事件
+}
+
+转换操作符： {
+    map  -------------  map可以将被观察者发送的数据类型转换成其他的数据类型
+    flatMap   --------  这个方法可以将事件序列中的元素进行整合加工，返回一个新的被观察者
+    concatMap  -------  这个方法的作用和flatMap的一致，但是它可以保证数据是有序的
+    buffer -----------  从需要发送的事件当中获取一定数量的事件，并将这些事件放到缓冲区当中
+    groupBy ----------  将发送的数据进行分组，每个分组会返回一个被观察者
+    scan -------------  将数据以一定的逻辑整合起来
+    window -----------  发送指定数量的事件时，就将这些事件分为一组
+}
+
+组合操作符： {}
+功能操作符： {}
+过滤操作符： {
+    filter
+    ofType
+    skip
+    distinct
+    distinctUnitChanged
+    take
+    debounce
+    firstElement & lastElement
+    elementAt & elementAtOrError
+}
+
+条件操作符： {
+    all
+    takeWhile
+    skipWhile
+    takeUntil
+    skipUntil
+    sequenceEqual
+    contains
+    isEmpty
+    amb
+    defaultIfEmpty
+}

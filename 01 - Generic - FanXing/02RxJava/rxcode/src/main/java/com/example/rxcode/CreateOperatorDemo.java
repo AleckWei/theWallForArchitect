@@ -23,7 +23,7 @@ import io.reactivex.functions.Consumer;
  */
 public class CreateOperatorDemo {
 
-    private static Observer myObserver = new Observer<Object>() {
+    public static Observer myObserver = new Observer<Object>() {
         @Override
         public void onSubscribe(Disposable d) {
             // 订阅关系一旦建立，就会回调到这里

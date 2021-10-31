@@ -1,8 +1,8 @@
-创建操作符：{
+创建操作符（重要）：{
     创建 被观察者 的各种操作符
-    create  ----------  创建一个被观察者
+    create（重要） ----  创建一个被观察者
     just    ----------  创建一个被观察者，并发送事件，发送的事件不可以超过10个以上
-    from 操作符 {
+    from（重要） 操作符 {
         fromArray
         fromCallable
         fromFuture
@@ -21,32 +21,96 @@
 }
 
 转换操作符： {
-    map  -------------  map可以将被观察者发送的数据类型转换成其他的数据类型
-    flatMap   --------  这个方法可以将事件序列中的元素进行整合加工，返回一个新的被观察者
+    map（重要） -------  map可以将被观察者发送的数据类型转换成其他的数据类型
+    flatMap（重要）----  这个方法可以将事件序列中的元素进行整合加工，返回一个新的被观察者（retrofit）
     concatMap  -------  这个方法的作用和flatMap的一致，但是它可以保证数据是有序的，而flatMap的数据是无序的
+
     buffer -----------  从需要发送的事件当中获取一定数量的事件，并将这些事件放到缓冲区当中
     groupBy ----------  将发送的数据进行分组，每个分组会返回一个被观察者
     scan -------------  将数据以一定的逻辑整合起来
-    window -----------  发送指定数量的事件时，就将这些事件分为一组
+    window -----------  发送指定数量的事件时，就将这些事件分为一组，window中的count参数
+                        就是代表指定的数量，例如count=2，就将事件两两分一组发送
+
+    compose  ---------  线程切换的转换操作符，这个在线程切换的操作中是非常重要的！！
 }
 
-组合操作符： {}
-功能操作符： {}
+组合操作符： {
+    concat  ----------  可以将多个观察者组合在一起，然后按照之前的顺序发送。需要注意的是，concat最多只能传入
+                        4个事件
+    concatArray  -----  这个方法与concat的作用基本一样，但是它可以传入无限个被观察者
+    merge  -----------  这个方法与concat作用基本一致，只是concat是串行发送事件，而merge是并行
+
+    concatArrayDelayError
+    mergeArrayDelayError
+      ----------------  在concatArray和mergeArray两个方法中，如果有一个被观察者发送了onError事件，那么
+                        整个事件的发送都会被停止下来。但是如果想让所有事件都发送完再处理这个onError事件的
+                        话，就可以调用这两个方法
+
+    zip  -------------  会将多个被观察者合并，根据各个被观察者发送事件的顺序一个个结合起来，最终发送的事件数
+                        量会与源Observable中最少事件的数量一致
+
+    combineLatest
+    combineLatestDelayError
+      ----------------  combineLatest的作用和zip类似，但是combineLatest发送事件的序列食欲发送的事件线
+                        有关的，当combineLatest中所有的Observable都发送了事件，只要其中有一个Observable
+                        发送事件，这个事件就会和其他Observable最近发送的事件结合起来发送
+
+    reduce
+    collect
+
+    startWith
+    startWithArray
+
+    count
+}
+功能操作符： {
+    delay  -----------  延迟一段时间发送事件
+    doOnEach  --------  Observable 每发送一件事件之前都会先回调这个方法
+    doOnNext  --------  Observable 每发送OnNext之前都会先回调这个方法
+    doAfterNext  -----  Observable 每发送OnNext之后都会回调这个方法
+    doOnComplete
+    doOnError
+    doOnSubscribe
+    doOnDispose
+    doOnLifecycle
+
+    doOnTerminate &
+    doAfterTerminate
+
+    doFinally
+    onErrorReturn
+    onErrorResumeNext
+    onExceptionResumeNext
+    retry
+    retryUntil
+    retryWhen
+    repeat
+    repeatWhen
+    subscribeOn(线程切换的重点)    指定被观察者的线程，若多次调用，仅有一次生效
+    observeOn(线程切换的重点)      指定观察者的线程，若多次调用，会有多次生效
+}
 过滤操作符： {
-    filter
-    ofType
-    skip
-    distinct
+    filter  ----------  通过一定逻辑来过滤被观察者发送的事件，如果为true则会发送事件，否则不发送
+    ofType  ----------  可以过滤不符合该类型的事件
+    skip  ------------  跳过正序某些事件，count代表跳过的数量
+    distinct  --------  过滤事件序列中的重复事件
     distinctUnitChanged
-    take
-    debounce
-    firstElement & lastElement
-    elementAt & elementAtOrError
-}
+        --------------  过滤掉连续重复的事件
+    take  ------------  控制观察者接收的事件的数量
+    debounce  --------  如果两件事件发送的时间间隔小于设定的时间间隔，
+                        则前一个事件就不会被发送给观察者
+    firstElement  ----  取事件序列的第一个事件
+    lastElement  -----  取事件序列的最后一个时间
 
+    elementAt & elementAtOrError
+        --------------  elementAt可以取出指定时间序列中的事件，
+                        但是输入的index如果超过了事件序列的总数，则不会出现
+                        任何结果；在index可能会超过总数的情况下，可以使用
+                        elementAtOrError方法
+}
 条件操作符： {
-    all
-    takeWhile
+    all  -------------  判断事件序列是否全部满足某个条件，如果都满足，则返回true；反之则为false
+    takeWhile  -------  可以设置条件，当某个数据满足条件时，就会发送该数据，反之则不发送
     skipWhile
     takeUntil
     skipUntil

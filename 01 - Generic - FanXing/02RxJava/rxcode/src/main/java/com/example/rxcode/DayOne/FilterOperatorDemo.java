@@ -1,9 +1,9 @@
-package com.example.rxcode;
+package com.example.rxcode.DayOne;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Predicate;
 
-import static com.example.rxcode.CreateOperatorDemo.myObserver;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.myObserver;
 
 /**
  * 过滤操作符demo

@@ -1,4 +1,4 @@
-package com.example.rxcode;
+package com.example.rxcode.DayOne;
 
 
 import android.util.Log;
@@ -11,7 +11,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
-import static com.example.rxcode.CreateOperatorDemo.myObserver;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.myObserver;
 
 /**
  * 转换操作符测试实例

@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".DNActivity"></activity>
+        <activity android:name=".DayTwoActivity"></activity>
+        <activity android:name=".DNActivity" />
         <activity android:name=".observer.TestActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

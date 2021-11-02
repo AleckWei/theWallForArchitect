@@ -121,6 +121,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnDayTwo = findViewById(R.id.btn_day_two);
+        btnDayTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DayTwoActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

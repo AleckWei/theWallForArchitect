@@ -1,8 +1,8 @@
-package com.example.rxcode;
+package com.example.rxcode.DayOne;
 
 import io.reactivex.Observable;
 
-import static com.example.rxcode.CreateOperatorDemo.myObserver;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.myObserver;
 
 /**
  * 组合操作符demo

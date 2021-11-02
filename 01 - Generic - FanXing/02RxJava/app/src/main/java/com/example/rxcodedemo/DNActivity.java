@@ -7,22 +7,22 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.rxcode.CreateOperatorDemo;
+import com.example.rxcode.DayOne.CreateOperatorDemo;
 
-import static com.example.rxcode.CreateOperatorDemo.test;
-import static com.example.rxcode.CreateOperatorDemo.testFromArray;
-import static com.example.rxcode.CreateOperatorDemo.testFromCallable;
-import static com.example.rxcode.CreateOperatorDemo.testFromFuture;
-import static com.example.rxcode.CreateOperatorDemo.testFromIterable;
-import static com.example.rxcode.CreateOperatorDemo.testJust;
-import static com.example.rxcode.FilterOperatorDemo.testFilter;
-import static com.example.rxcode.MergeOperatorDemo.testConcat;
-import static com.example.rxcode.MergeOperatorDemo.testConcatArray;
-import static com.example.rxcode.ToolOperatorDemo.testSubscribeOn;
-import static com.example.rxcode.TransOperatorDemo.testBuffer;
-import static com.example.rxcode.TransOperatorDemo.testConcatMap;
-import static com.example.rxcode.TransOperatorDemo.testFlatMap;
-import static com.example.rxcode.TransOperatorDemo.testMap;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.test;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.testFromArray;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.testFromCallable;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.testFromFuture;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.testFromIterable;
+import static com.example.rxcode.DayOne.CreateOperatorDemo.testJust;
+import static com.example.rxcode.DayOne.FilterOperatorDemo.testFilter;
+import static com.example.rxcode.DayOne.MergeOperatorDemo.testConcat;
+import static com.example.rxcode.DayOne.MergeOperatorDemo.testConcatArray;
+import static com.example.rxcode.DayOne.ToolOperatorDemo.testSubscribeOn;
+import static com.example.rxcode.DayOne.TransOperatorDemo.testBuffer;
+import static com.example.rxcode.DayOne.TransOperatorDemo.testConcatMap;
+import static com.example.rxcode.DayOne.TransOperatorDemo.testFlatMap;
+import static com.example.rxcode.DayOne.TransOperatorDemo.testMap;
 
 public class DNActivity extends AppCompatActivity {
 

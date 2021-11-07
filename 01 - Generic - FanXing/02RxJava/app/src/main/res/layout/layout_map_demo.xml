@@ -25,12 +25,32 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_divider_create" />
 
     <Button
+        android:id="@+id/btn_for_list_in_mapMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="使用map进行遍历"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map" />
+
+    <Button
+        android:id="@+id/btn_test_flatMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="使用flatMap进行遍历"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_for_list_in_mapMethod" />
+
+    <Button
         android:id="@+id/btn_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="清楚student列表"
+        android:text="清除student列表"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_map" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_test_flatMap" />
 </androidx.constraintlayout.widget.ConstraintLayout>

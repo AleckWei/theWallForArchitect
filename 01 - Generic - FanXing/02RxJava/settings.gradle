@@ -1,3 +1,4 @@
-include ':rxcode'
+include ':rxCore'
+include ':rxTest'
 include ':app'
 rootProject.name = "RxCodeDemo"

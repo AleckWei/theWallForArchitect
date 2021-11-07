@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.rxcodedemo">
+    package="com.example.rxCodeDemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,16 +12,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-        <activity android:name=".DayTwoActivity"></activity>
-        <activity android:name=".DNActivity" />
-        <activity android:name=".observer.TestActivity" />
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name="com.example.rxCodeDemo.observer.TestActivity" />
+        <activity android:name="com.example.rxCodeDemo.activity.Day1Activity" />
+        <activity android:name="com.example.rxCodeDemo.activity.Day2Activity" />
+        <activity android:name="com.example.rxCodeDemo.activity.Day3Activity" />
+        <activity android:name="com.example.rxCodeDemo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -12,7 +12,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/rxcode" />
+            <option value="$PROJECT_DIR$/rxCore" />
+            <option value="$PROJECT_DIR$/rxTest" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

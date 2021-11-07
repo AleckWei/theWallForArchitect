@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DayTwoActivity">
+    tools:context=".activity.Day2Activity">
 
     <include
         android:id="@+id/layout_map_demo"

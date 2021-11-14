@@ -16,7 +16,6 @@ public class ObservableMap<T, S> extends AbstractObservableWithUpStream<T, S> {
 
     @Override
     protected void subscribeActual(Observer<S> observer) {
-        observer.onSubscribe();
         MapObservable<T, S> mapObservable = new MapObservable<>(observer, function);
         source.subscribe(mapObservable);
     }
@@ -34,7 +33,7 @@ public class ObservableMap<T, S> extends AbstractObservableWithUpStream<T, S> {
 
         @Override
         public void onSubscribe() {
-//            downStream.onSubscribe();
+            downStream.onSubscribe();
         }
 
         @Override

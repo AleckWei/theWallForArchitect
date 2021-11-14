@@ -5,7 +5,11 @@ import com.example.rxcore.imp.ObservableOnSubscribe;
 import com.example.rxcore.imp.ObservableSource;
 import com.example.rxcore.imp.Observer;
 import com.example.rxcore.operator.ObservableCreate;
+import com.example.rxcore.operator.ObservableFlatMap;
 import com.example.rxcore.operator.ObservableMap;
+import com.example.rxcore.operator.ObservableObserveOn;
+import com.example.rxcore.operator.ObservableSubscribeOn;
+import com.example.rxcore.operator.scheduler.Scheduler;
 
 /**
  * rxJava被观察者核心抽象类
@@ -30,4 +34,17 @@ public abstract class Observable<T> implements ObservableSource<T> {
     public <S> ObservableMap<T, S> map(Function<T, S> function) {
         return new ObservableMap<>(this, function);
     }
+
+    public <S> ObservableFlatMap<T, S> flatMap(Function<T, ObservableSource<S>> function) {
+        return new ObservableFlatMap<>(this, function);
+    }
+
+    public ObservableSubscribeOn<T> subscribeOn(Scheduler scheduler) {
+        return new ObservableSubscribeOn<>(this, scheduler);
+    }
+
+    public ObservableObserveOn<T> observeOn(Scheduler scheduler) {
+        return new ObservableObserveOn<>(this, scheduler);
+    }
+
 }

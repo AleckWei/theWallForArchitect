@@ -11,8 +11,10 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class MapDemo {
@@ -64,6 +66,9 @@ public class MapDemo {
     public static void testFlatMap() {
         StudentModel.getsInstance().init();
         Observable.fromIterable(StudentModel.getsInstance().getStudents())
+                // 执行线程调度
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .flatMap(new Function<Student, ObservableSource<Course>>() {
                     @Override
                     public ObservableSource<Course> apply(Student student) throws Exception {

@@ -25,10 +25,11 @@ public class ObservableCreate<T> extends Observable<T> {
         observableOnSubscribe.subscribe(createEmitter);
     }
 
-    static class CreateEmitter<T> implements Emitter<T> {
+    private static class CreateEmitter<T> implements Emitter<T> {
 
-        Observer<T> observer;
-        boolean done;
+        private final Observer<T> observer;
+
+        private boolean done;
 
         public CreateEmitter(Observer<T> observer) {
             this.observer = observer;

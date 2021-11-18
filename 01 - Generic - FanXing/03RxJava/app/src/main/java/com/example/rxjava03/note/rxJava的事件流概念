@@ -6,6 +6,22 @@
 
     每次创建新的被观察者，也会创建新的观察者，而这个观察者同样持有下游被观察者的引用
 
+    ObservableOnSubscribe source = new ObservableOnSubscribe() {...}
+
+    Observable.create(source) -> observable0 = new ObservableCreate(source)
+
+    observable0.map() -> observable1 = new ObservableMap(observable0)
+
+    observable1.subscribeOn() -> observable2 = new ObservableSubscribeOn(observable1)
+
+    observable2.flatMap() -> observable3 = new ObservableFlatMap(observable2)
+
+    observable3.observableOn() -> observable4 = new ObservableObservableOn(observable3)
+
+    observable4.flatMap() -> observable5 = new ObservableFlatMap(observable4)
+
+    就是从source开始，用装饰器模式不断生成新的Observable，直到subscribe
+
 2. subscribeActual订阅流
 
 3. 观察者回调流

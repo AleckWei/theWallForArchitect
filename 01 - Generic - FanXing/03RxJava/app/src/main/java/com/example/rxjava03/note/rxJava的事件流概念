@@ -23,8 +23,44 @@
     就是从source开始，用装饰器模式不断生成新的Observable，直到subscribe
 
 2. subscribeActual订阅流
+    订阅流则是事件创建流的逆序
+
+    Observer observer0 = new Observer(){...}
+    observable5.subscribe(observer0) -> observable5.subscribeActual(observer0)
+
+    Observer observer1 = new MergerObserver(observer0) {...}
+    -> observable4.subscribe(observer1) -> observable4.subscribeActual(observer1)
+
+    Observer observer2 = new ObserverOnObserver(observer1) {...}
+    -> observable3.subscribe(observer2) -> observable3.subscribeActual(observer2)
+
+    Observer observer3 = new MapObserver(observer2) {...}
+    -> observable2.subscribe(observer3) -> observable2.subscribeActual(observer3)
+
+    Observer observer4 = new SubscribeOnObserver(observer3) {...}
+    -> observable1.subscribe(observer4) -> observable1.subscribeActual(observer4)
+
+    Observer observer5 = new MapOnObserver(observer4) {...}
+    -> observable0.subscribe(observer5) -> observable0.subscribeActual(observer5)
 
 3. 观察者回调流
+    observable0 持有一个 ObservableOnSubscribe 的引用，这个事件发射源source，将会由
+    observable() 开启： observable0.subscribeActual(observer5)
+    -> 创建一个Emitter：
+        CreateEmitter<T> parent = new CreateEmitter<>(observer5);
+    -> source.subscribe(parent)，开始发送真正的事件
+
+    此后 Emitter(上面的parent) 就发送事件， parent.onNext("xxx");
+    -> observer5.onNext("xxx")
+    -> observer4.onNext("xxx")
+    -> observer3.onNext("xxx")
+    -> observer2.onNext("xxx")
+    -> observer1.onNext("xxx")
+    -> observer0.onNext("xxx")
+
+    observer0 就是我们手动构造出来的事件，里面做我们的业务处理
+
+    这样就完成了事件链的流动
 
 事件流动是从左向右的；把每个被观察者看成一个节点
 节点左侧代表上流，节点右侧代表下游

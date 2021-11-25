@@ -2,4 +2,5 @@
     <string name="app_name">RxJava03</string>
     <string name="main_test_thread">测试线程</string>
     <string name="main_intent_activity2">切换activity</string>
+    <string name="main_test_my_method">测试我的方法</string>
 </resources>

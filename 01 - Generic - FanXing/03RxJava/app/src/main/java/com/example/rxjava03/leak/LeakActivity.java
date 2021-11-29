@@ -3,12 +3,18 @@ package com.example.rxjava03.leak;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rxjava03.R;
 import com.example.rxjava03.leak.lifeCycle.WWJRxLifeCycle;
 import com.example.rxjava03.leak.transformer.SchedulerTransformer;
+import com.example.rxjava03.retrofit.RetrofitUtils;
+import com.jakewharton.rxbinding4.view.RxView;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -18,6 +24,7 @@ import io.reactivex.subjects.AsyncSubject;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.ReplaySubject;
+import kotlin.Unit;
 
 /**
  * 解决RxJava中的内存泄露问题
@@ -33,7 +40,37 @@ public class LeakActivity extends AppCompatActivity {
 //        subjectTest();
 //        behaviorSubjectTest();
 //        replaySubjectTest();
-        publishSubjectTest();
+//        publishSubjectTest();
+
+//        WWJRxBus.get().post("发射了个事件");
+        requestPermission();
+
+        Button btnTestRxBinding = findViewById(R.id.btn_test_rx_binding);
+
+        // 防止快速点击，1s一次
+        RxView.clicks(btnTestRxBinding)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new io.reactivex.rxjava3.functions.Consumer<Unit>() {
+                    @SuppressLint("CheckResult")
+                    @Override
+                    public void accept(Unit unit) throws Throwable {
+                        Log.i("wwj", "RxBinding点击回调");
+                        RetrofitUtils.getService().getUserInfo()
+                                .compose(new SchedulerTransformer<>())
+                                .compose(WWJRxLifeCycle.bindLifeCycle(LeakActivity.this))
+                                .subscribe(new Consumer<String>() {
+                                    @Override
+                                    public void accept(String s) throws Exception {
+                                        Log.d("wwj", "随便写的请求" + s);
+                                    }
+                                }, new Consumer<Throwable>() {
+                                    @Override
+                                    public void accept(Throwable throwable) throws Exception {
+                                        Log.d("wwj", "一般是请求不到的：" + throwable.getMessage());
+                                    }
+                                });
+                    }
+                });
     }
 
     @SuppressLint("CheckResult")
@@ -160,5 +197,18 @@ public class LeakActivity extends AppCompatActivity {
         publishSubject.onNext("Hello wwj5");
         publishSubject.onComplete();
 
+    }
+
+    @SuppressLint("CheckResult")
+    private void requestPermission() {
+        new RxPermissions(this)
+                .request("android.permission.CAMERA")
+                .compose(WWJRxLifeCycle.bindLifeCycle(this))
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        Log.i("wwj", "获取相机权限：" + aBoolean);
+                    }
+                });
     }
 }

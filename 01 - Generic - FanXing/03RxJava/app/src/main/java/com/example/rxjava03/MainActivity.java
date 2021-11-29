@@ -1,5 +1,6 @@
 package com.example.rxjava03;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rxjava03.leak.LeakActivity;
+import com.example.rxjava03.leak.lifeCycle.WWJRxLifeCycle;
+import com.example.rxjava03.rxBus.WWJRxBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,7 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -29,6 +33,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("wwj", "是否相等？ " + b);
             }
         });
+
+        WWJRxBus.get().toObservable(String.class)
+                .compose(WWJRxLifeCycle.bindLifeCycle(this))
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.i("wwj", "构建RxBus : " + s);
+                    }
+                });
 
     }
 

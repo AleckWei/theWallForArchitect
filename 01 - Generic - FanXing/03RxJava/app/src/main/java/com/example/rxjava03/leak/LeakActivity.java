@@ -54,7 +54,8 @@ public class LeakActivity extends AppCompatActivity {
                     @SuppressLint("CheckResult")
                     @Override
                     public void accept(Unit unit) throws Throwable {
-                        Log.i("wwj", "RxBinding点击回调");
+                        Log.i("wwj"
+                                , "RxBinding点击回调");
                         RetrofitUtils.getService().getUserInfo()
                                 .compose(new SchedulerTransformer<>())
                                 .compose(WWJRxLifeCycle.bindLifeCycle(LeakActivity.this))

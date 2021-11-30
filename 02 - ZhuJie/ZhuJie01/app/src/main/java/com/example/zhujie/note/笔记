@@ -1,0 +1,48 @@
+一、什么是注解
+    Annotation是JDK 5.0 引进的新技术（现在好像已经到JDK18.0了， 2021-11-30）
+
+    Annotation的作用：
+        不是程序本身，可以对程序作出解释（这一点和注释（comment）本身没有什么区别）
+        可以被其他程序（比如：编译器等）读取
+
+    Annotation的格式：
+        注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如：
+        @SuppressWarnings(value = "unchecked")
+
+    Annotation在哪里使用
+        可以附加在package，class，method，field等上面，相当于个他们添加了额外的
+        辅助信息，我们可以通过反射机制编程实现对这些元数据的访问
+
+二、内置注解
+    @Override: 定义在java.lang.Override中，此注释只适用于修辞方法，标识一个方法
+    声明打算重写超类中的另一个方法声明
+
+    @Deprecated: 定义在java.lang.Deprecated中，次注释可以用于修辞方法，属性，类，
+    表示不鼓励程序员使用这样的元素，通常是因为它很危险或者存在更好的选择
+
+    @SuppressWarnings: 定义在java.lang.SuppressWarnings中，用来印制编译时的警告信息。
+        与前两个注释有所不同，你需要添加一个参数才能正确使用。这些参数都是已经定义好的了，
+        我们选择性的使用就好了。
+
+        @SuppressWarning("all")
+        @SuppressWarning("unchecked")
+        @SuppressWarning(value={"unchecked","deprecation"})
+        等等
+
+三、元注解
+    元注解的作用就是负责注解其他注解，Java定义了4个标准的meta-annotation类型，他们被用来
+    提供对其他annotation类型作说明
+
+    这些类型和它们所支持的类在java.lang.annotation包中可以找到：
+        @Target @Retention @Documented @Inherited
+
+    @Target: 用于描述注解的使用范围（即：被描述的注解可以用在什么地方）
+
+    @Retention: 标识需要在什么级别保存该注释信息，用于描述注解的声明周期
+        SOURCE(源代码时期) <
+            CLASS（代码编译后又没有在运行过程中，比如要把其他class注入） <
+                RUNTIME（程序运行时期）
+
+    @Document: 说明该注解将被包含在javadoc中
+
+    @Inherited: 说明子类可以继承父类中的该注解

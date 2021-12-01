@@ -7,20 +7,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * 测试元注解
- * 一般来说， Target 和 Retention 这两个元注解是必写的
- */
-@MyTypeAndMethodAnnotation
-public class Test02 {
-
-    @MyAnnotation
-    @MyTypeAndMethodAnnotation
-    public void test() {
-    }
-
-}
-
 // 这里先定义一个注解
 // 由Target元注解指定该注解只能在方法上使用
 // 用在类上是不行的
@@ -37,4 +23,18 @@ public class Test02 {
 // Inherited表示子类可以继承父类的注解
 @Inherited
 @interface MyTypeAndMethodAnnotation {
+}
+
+/**
+ * 测试元注解
+ * 一般来说， Target 和 Retention 这两个元注解是必写的
+ */
+@MyTypeAndMethodAnnotation
+public class Test02 {
+
+    @MyAnnotation
+    @MyTypeAndMethodAnnotation
+    public void test() {
+    }
+
 }

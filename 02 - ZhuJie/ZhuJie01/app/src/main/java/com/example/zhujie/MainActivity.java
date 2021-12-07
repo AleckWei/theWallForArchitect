@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.zhujie.reflection.Test03;
+import com.example.zhujie.reflection.Test06;
 
 /**
  * 注解
@@ -21,11 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
 //        TestReflection.main(new String[]{"wwj"});
 
-        try {
-            Test03.main();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Test03.main();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
+//        Test04.main();
+//        Test05.main();
+        Test06.main();
     }
 }

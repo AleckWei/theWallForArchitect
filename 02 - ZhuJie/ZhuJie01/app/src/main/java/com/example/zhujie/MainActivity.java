@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.zhujie.reflection.Test06;
+import com.example.zhujie.classLoader.Test07;
 
 /**
  * 注解
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        Test04.main();
 //        Test05.main();
-        Test06.main();
+//        Test06.main();
+        Test07.main();
     }
 }

@@ -2,13 +2,14 @@ package com.example.zhujie.reflection;
 
 import android.util.Log;
 
+
 /**
  * 测试Class类的创建方式有哪些
  */
 public class Test03 {
     public static void main() throws ClassNotFoundException {
         Person person = new Student();
-        Log.d("wwj - Test03", "这个人是：" + person.name);
+        Log.d("wwj - Test03", "这个人是：" + person.getName());
 
         // 方式一，通过对象获取Class对象
         Class c1 = person.getClass();
@@ -36,14 +37,45 @@ public class Test03 {
     }
 }
 
+@Deprecated
 class Person {
-    public String name;
+    protected String name;
+
+    private String id;
+
+    private int age;
 
     public Person() {
     }
 
-    public Person(String name) {
+    public Person(String name, String id, int age) {
         this.name = name;
+        this.id = id;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override
@@ -52,6 +84,15 @@ class Person {
                 "name='" + name + '\'' +
                 '}';
     }
+
+    private void logYou() {
+        Log.d("wwj", "哈哈哈");
+    }
+
+    protected void setOther(String name, int age) {
+        Log.d("wwj", "我是" + name + ",今年" + age + "岁了");
+    }
+
 }
 
 class Student extends Person {

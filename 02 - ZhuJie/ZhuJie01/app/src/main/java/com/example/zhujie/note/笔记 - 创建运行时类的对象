@@ -1,0 +1,12 @@
+获取运行时类的完整结构
+    通过反射获取运行时类的完整结构
+    Filed、Method、Constructor、Superclass、Interface、Annotation
+
+    实现的全部接口
+    所继承的父类
+    全部的构造器
+    全部的方法
+    全部的Field
+    注解
+    。。。
+

@@ -4,7 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.zhujie.getRunTimeClass.Test09;
+import com.example.zhujie.efficiency.Test10;
+import com.example.zhujie.genericReflection.Test11;
 
 /**
  * 注解
@@ -32,10 +33,16 @@ public class MainActivity extends AppCompatActivity {
 //        Test06.main();
 //        Test07.main();
 //        Test08.main();
-        try {
-            Test09.main();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Test09.main();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        Test10.test01();
+//        Test10.test02();
+//        Test10.test03();
+
+        Test11.main();
     }
 }

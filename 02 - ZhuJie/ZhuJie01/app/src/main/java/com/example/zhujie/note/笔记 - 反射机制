@@ -104,7 +104,7 @@ Class 类的常用方法
         可能抛出一个ClassNotFoundException;
 
         try {
-            Class clazz = Class.forName("com.example.zhujie.reflection.User")
+            Class clazz = Class.forName("com.example.zhujie.reflection.UserV2")
         } catch(ClassNotFoundException e) {
             e.printTrack();
         }

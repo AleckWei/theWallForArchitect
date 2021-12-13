@@ -14,16 +14,16 @@ public class TestReflection {
 
         // 通过反射获得类的对象
         try {
-            Class userClass1 = Class.forName("com.example.zhujie.reflection.User");
+            Class userClass1 = Class.forName("com.example.zhujie.reflection.UserV2");
             Log.d("wwj", "userClass: " + userClass1);
 
-            Class userClass2 = Class.forName("com.example.zhujie.reflection.User");
+            Class userClass2 = Class.forName("com.example.zhujie.reflection.UserV2");
             Log.d("wwj", "userClass: " + userClass2);
 
-            Class userClass3 = Class.forName("com.example.zhujie.reflection.User");
+            Class userClass3 = Class.forName("com.example.zhujie.reflection.UserV2");
             Log.d("wwj", "userClass: " + userClass3);
 
-            Class userClass4 = Class.forName("com.example.zhujie.reflection.User");
+            Class userClass4 = Class.forName("com.example.zhujie.reflection.UserV2");
             Log.d("wwj", "userClass: " + userClass4);
 
             Log.d("wwj", "1==2 ? :" + (userClass1.hashCode() == userClass2.hashCode()));

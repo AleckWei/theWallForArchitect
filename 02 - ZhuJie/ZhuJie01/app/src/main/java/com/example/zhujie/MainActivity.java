@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.zhujie.efficiency.Test10;
+import com.example.zhujie.annotationReflection.Test12;
 import com.example.zhujie.genericReflection.Test11;
 
 /**
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 //        Test10.test02();
 //        Test10.test03();
 
-        Test11.main();
+//        Test11.main();
+
+        Test12.main();
     }
 }

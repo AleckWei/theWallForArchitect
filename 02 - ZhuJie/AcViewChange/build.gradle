@@ -4,7 +4,6 @@ buildscript {
         maven {
             url 'http://localhost:8081/artifactory/android_group/'
         }
-        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.2'

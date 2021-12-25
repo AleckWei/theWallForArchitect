@@ -1,0 +1,2 @@
+rootProject.name = "AcViewChange"
+include ':app'

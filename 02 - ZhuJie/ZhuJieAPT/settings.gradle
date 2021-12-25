@@ -1,2 +1,4 @@
 rootProject.name = "ZhuJieAPT"
 include ':app'
+include ':annotation'
+include ':annotations_compiler'

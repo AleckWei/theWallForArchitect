@@ -1,0 +1,2 @@
+rootProject.name = "ZhuJieAPT"
+include ':app'

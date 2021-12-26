@@ -3,7 +3,6 @@ package com.example.acviewchange.recyclerview.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,8 +33,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeItemViewHolder holder, int position) {
-        TextView tvBgContent = holder.itemView.findViewById(R.id.tv_bg_content);
-        tvBgContent.setText(mData.get(position).getContent());
+//        TextView tvBgContent = holder.itemView.findViewById(R.id.tv_bg_content);
+//        tvBgContent.setText(mData.get(position).getContent());
         mListener.convert(holder.itemView, mData.get(position));
     }
 

@@ -9,5 +9,4 @@ public class HomeItemViewHolder extends RecyclerView.ViewHolder {
     public HomeItemViewHolder(@NonNull View itemView) {
         super(itemView);
     }
-
 }

@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_black">#FFEB3B</color>
-    <color name="ac_view_bg">#FF6501FF</color>
+    <color name="ac_view_bg">#664F48FF</color>
+    <color name="card_view_bg">#11FFFFFF</color>
 </resources>

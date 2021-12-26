@@ -3,23 +3,9 @@ package com.example.acviewchange.acview.databean;
 public class ItemBean {
 
     private String mid;
-
-    private String content;
-
-    public ItemBean() {
-    }
-
-    public ItemBean(int id) {
-        content = id + "";
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
+    private String deviceName;
+    private int deviceState;
+    private int pow;
 
     public String getMid() {
         return mid;
@@ -27,5 +13,29 @@ public class ItemBean {
 
     public void setMid(String mid) {
         this.mid = mid;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public int getDeviceState() {
+        return deviceState;
+    }
+
+    public void setDeviceState(int deviceState) {
+        this.deviceState = deviceState;
+    }
+
+    public int getPow() {
+        return pow;
+    }
+
+    public void setPow(int pow) {
+        this.pow = pow;
     }
 }

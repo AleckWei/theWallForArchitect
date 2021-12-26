@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.CLASS)
-public @interface AcViewModel {
+public @interface AcViewPresenterAnnotation {
     String value() default "10001";
 }

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.example.acviewchange.acview.AcView;
 import com.example.acviewchange.acview.databean.ItemBean;
+import com.example.acviewchange.acview.viewimp.IPluginView;
 import com.example.acviewchange.dataimp.OnRequestListener;
 import com.example.acviewchange.model.MainModel;
 import com.example.acviewchange.recyclerview.adapter.HomeAdapter;
@@ -26,8 +27,21 @@ public class MainPresenter {
             = new UpdateViewListener() {
         @Override
         public void convert(@NonNull View rootView, @NonNull ItemBean itemData) {
-            AcView acView = new AcView(rootView, itemData);
-            ((FrameLayout) rootView).addView(acView);
+            boolean isAdd = false;
+            IPluginView viewItem = null;
+            for (int i = 0; i < ((FrameLayout) rootView).getChildCount(); i++) {
+                if (((FrameLayout) rootView).getChildAt(i) instanceof AcView) {
+                    viewItem = (IPluginView) ((FrameLayout) rootView).getChildAt(i);
+                    isAdd = true;
+                    break;
+                }
+            }
+            if (!isAdd) {
+                AcView acView = new AcView(rootView, itemData);
+                viewItem = acView;
+                ((FrameLayout) rootView).addView(acView);
+            }
+            viewItem.setState(itemData);
         }
     };
 

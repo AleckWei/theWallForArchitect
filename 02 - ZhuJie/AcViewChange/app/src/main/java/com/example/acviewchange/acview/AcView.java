@@ -6,27 +6,42 @@ import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.bumptech.glide.Glide;
 import com.example.acviewchange.R;
+import com.example.acviewchange.acview.acViewPresenter.AcViewPresenter;
 import com.example.acviewchange.acview.databean.ItemBean;
+import com.example.acviewchange.acview.viewimp.IPluginView;
+import com.example.annotation.AcView.AcViewBinder;
+import com.example.annotation.AcView.AcViewPresenterBinder;
 
-public class AcView extends LinearLayout {
+public class AcView extends LinearLayout implements View.OnClickListener, IPluginView {
 
     private final String mid;
+
+    private TextView tvDeviceName, tvDeviceState, tvSendingCmd;
+
+    private ImageView ivPower;
+
+    AcViewPresenter mPresenter;
 
     public AcView(Context context) {
         super(context);
         initView(context);
         mid = "10001";
+        initData();
     }
 
     public AcView(View rootView, ItemBean data) {
         super(rootView.getContext());
         initView(rootView.getContext(), rootView);
         mid = data.getMid();
+        initData();
     }
 
     private void initView(Context context, View... parent) {
@@ -51,6 +66,60 @@ public class AcView extends LinearLayout {
 
         rootView.setLayoutParams(lp);
         addView(rootView);
+
+        tvDeviceName = rootView.findViewById(R.id.tv_device_name);
+        tvDeviceState = rootView.findViewById(R.id.tv_device_state);
+        tvSendingCmd = rootView.findViewById(R.id.tv_send_cmd);
+        ivPower = rootView.findViewById(R.id.iv_power);
+        ivPower.setOnClickListener(this);
+    }
+
+    private void initData() {
+        AcViewPresenterBinder.bind(this);
+        mPresenter = new AcViewPresenter(this, mid);
+        AcViewBinder.bind(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.iv_power) {
+            mPresenter.sendPowCmd();
+        }
+    }
+
+    public void setState(ItemBean data) {
+        tvDeviceName.setText(data.getDeviceName());
+        tvDeviceState.setText(data.getDeviceState() == 1 ? "在线" : "离线");
+        if (data.getPow() == 1) {
+            showPowOnView();
+        } else {
+            showPowOffView();
+        }
+    }
+
+    @Override
+    public void showPowOnView() {
+        Glide.with(this)
+                .load(R.drawable.power_yellow)
+                .into(ivPower);
+    }
+
+    @Override
+    public void showPowOffView() {
+        Glide.with(this)
+                .load(R.drawable.power_black)
+                .into(ivPower);
+    }
+
+    @Override
+    public void setLoading(boolean loading) {
+        if (tvSendingCmd != null) {
+            if (loading) {
+                tvSendingCmd.setVisibility(VISIBLE);
+            } else {
+                tvSendingCmd.setVisibility(GONE);
+            }
+        }
     }
 
 

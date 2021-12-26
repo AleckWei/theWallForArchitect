@@ -2,7 +2,7 @@ package com.example.acviewchange;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     RecyclerView rvMain;
 
     @BindView(R.id.rl_load_fail)
-    LinearLayout rlLoadFailedLayout;
+    RelativeLayout rlLoadFailedLayout;
 
     private MainPresenter mPresenter;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         mPresenter = new MainPresenter(this);
 
         loadData();
-        rvMain.addItemDecoration(new ItemDecoration(2, 10, true));
+        rvMain.addItemDecoration(new ItemDecoration(2, 20,true));
         rvMain.setLayoutManager(new GridLayoutManager(this, 2));
 
         setListener();

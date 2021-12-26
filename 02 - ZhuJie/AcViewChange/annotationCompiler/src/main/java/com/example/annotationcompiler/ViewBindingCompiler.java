@@ -30,7 +30,7 @@ import javax.tools.JavaFileObject;
  * 注解处理器，用于生成代码
  */
 @AutoService(Processor.class)
-public class AnnotationCompiler extends AbstractProcessor {
+public class ViewBindingCompiler extends AbstractProcessor {
 
     // 生成java文件，必须在生成代码之前被初始化才行
     Filer filer;

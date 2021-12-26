@@ -5,7 +5,7 @@ import com.example.annotation.ButterKnife.imp.IButterKnife;
 public class ButterKnife {
     public static void bind(Object target) {
         String viewBindingName = target.getClass().getName() + "_ViewBinding";
-        Class<?> activityClass = null;
+        Class<?> activityClass;
         try {
             activityClass = Class.forName(viewBindingName);
             if (IButterKnife.class.isAssignableFrom(activityClass)) {

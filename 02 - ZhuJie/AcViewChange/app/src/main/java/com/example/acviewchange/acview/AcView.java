@@ -2,6 +2,8 @@ package com.example.acviewchange.acview;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +16,32 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.acviewchange.R;
-import com.example.acviewchange.acview.acViewPresenter.AcViewPresenter;
 import com.example.acviewchange.acview.databean.ItemBean;
 import com.example.acviewchange.acview.viewimp.IPluginView;
-import com.example.annotation.AcView.AcViewBinder;
-import com.example.annotation.AcView.AcViewPresenterBinder;
 
 public class AcView extends LinearLayout implements View.OnClickListener, IPluginView {
 
+    private static final int HIDE_TIPS = 0;
     private final String mid;
 
     private TextView tvDeviceName, tvDeviceState, tvSendingCmd;
 
     private ImageView ivPower;
 
-    AcViewPresenter mPresenter;
+    AcViewBasePresenter mPresenter;
+
+    private final Handler mHandler
+            = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            int what = msg.what;
+            if (what == HIDE_TIPS) {
+                tvSendingCmd.setVisibility(GONE);
+                tvSendingCmd.setTextColor(getContext().getResources().getColor(R.color.black));
+            }
+            return false;
+        }
+    });
 
     public AcView(Context context) {
         super(context);
@@ -75,9 +88,7 @@ public class AcView extends LinearLayout implements View.OnClickListener, IPlugi
     }
 
     private void initData() {
-        AcViewPresenterBinder.bind(this);
-        mPresenter = new AcViewPresenter(this, mid);
-        AcViewBinder.bind(this);
+        AcViewBinder.bindPresenter(this, mid);
     }
 
     @Override
@@ -114,12 +125,22 @@ public class AcView extends LinearLayout implements View.OnClickListener, IPlugi
     @Override
     public void setLoading(boolean loading) {
         if (tvSendingCmd != null) {
+            tvSendingCmd.setTextColor(getContext().getResources().getColor(R.color.black));
+            tvSendingCmd.setText(getContext().getResources().getString(R.string.ac_view_sending_cmd));
             if (loading) {
                 tvSendingCmd.setVisibility(VISIBLE);
             } else {
                 tvSendingCmd.setVisibility(GONE);
             }
         }
+    }
+
+    @Override
+    public void showWrongTips(String tips) {
+        tvSendingCmd.setVisibility(VISIBLE);
+        tvSendingCmd.setText(tips);
+        tvSendingCmd.setTextColor(getContext().getResources().getColor(R.color.red));
+        mHandler.sendEmptyMessageDelayed(HIDE_TIPS, 2000);
     }
 
 

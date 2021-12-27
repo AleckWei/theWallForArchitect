@@ -1,12 +1,10 @@
-package com.example.acviewchange.acview.acViewModel;
+package com.example.acviewchange.acview;
 
 import com.example.acviewchange.dataimp.OnRequestListener;
-import com.example.annotation.AcView.annotation.AcViewModelAnnotation;
 
 import java.util.Random;
 
-@AcViewModelAnnotation
-public abstract class AcViewBaseModel {
+public abstract class AcViewBaseModel<T> {
 
     protected final Random random;
 
@@ -14,13 +12,13 @@ public abstract class AcViewBaseModel {
 
     protected String mid;
 
-    public AcViewBaseModel() {
+    AcViewBaseModel() {
         this("10001");
     }
 
     public AcViewBaseModel(String mid) {
         random = new Random();
-         pow = 0;
+        pow = 1;
         this.mid = mid;
     }
 
@@ -29,6 +27,6 @@ public abstract class AcViewBaseModel {
      *
      * @param listener 用于指令控制回调
      */
-    protected abstract void sendPowCmd(final OnRequestListener<Integer> listener);
+    public abstract void sendPowCmd(final OnRequestListener<T> listener);
 
 }

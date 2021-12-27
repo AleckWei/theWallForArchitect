@@ -46,7 +46,7 @@ public class ViewBindingCompiler extends AbstractProcessor {
         super.init(processingEnv);
         filer = processingEnv.getFiler();
         messager = processingEnv.getMessager();
-        messager.printMessage(Diagnostic.Kind.NOTE, "process init");
+//        messager.printMessage(Diagnostic.Kind.NOTE, "process init");
     }
 
     // getSupportedAnnotationTypes 以及 getSupportedSourceVersion
@@ -150,8 +150,7 @@ public class ViewBindingCompiler extends AbstractProcessor {
                 }
             }
         } else {
-            messager.printMessage(Diagnostic.Kind.WARNING,
-                    "map's is 0");
+//            messager.printMessage(Diagnostic.Kind.WARNING, "map's size is 0");
         }
         return false;
     }

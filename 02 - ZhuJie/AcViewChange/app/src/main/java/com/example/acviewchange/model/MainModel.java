@@ -38,7 +38,7 @@ public class MainModel {
         }
         Random random2 = new Random();
 
-        if (random2.nextInt(202) > 200) {
+        if (random2.nextInt(202) > 190) {
             listener.onFail(new Throwable("You catch a wrong number"));
         } else {
             new Handler().postDelayed(new Runnable() {

@@ -19,6 +19,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
       <module name="AcViewChange.app" target="1.8" />
+      <module name="AcViewChange.common" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

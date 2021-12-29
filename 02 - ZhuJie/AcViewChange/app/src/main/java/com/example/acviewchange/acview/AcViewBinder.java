@@ -2,7 +2,6 @@ package com.example.acviewchange.acview;
 
 import android.util.Log;
 
-import com.example.acviewchange.acview.AcView10001.AcViewPresenter;
 import com.example.acviewchange.acview.viewimp.IPluginView;
 
 import java.lang.reflect.Constructor;

@@ -27,6 +27,9 @@ public class AcView_Binder {
         if (mAcViewPresenterMap.size() == 0) {
             mAcViewPresenterMap.put("10001", "com.example.acviewchange.acview.AcView10001.AcViewPresenter");
             mAcViewPresenterMap.put("28a02", "com.example.acviewchange.acview.AcView28a02.AcView28a02Presenter");
+            mAcViewPresenterMap.put("28c96", "com.example.acviewchange.acview.AcView28c96.AcView28c96Presenter");
+            mAcViewPresenterMap.put("828214", "com.example.acviewchange.acview.AcView828214.AcView828214Presenter");
+            mAcViewPresenterMap.put("981904", "com.example.acviewchange.acview.AcView981904.AcView981904Presenter");
         }
         return mAcViewPresenterMap;
     }
@@ -35,6 +38,8 @@ public class AcView_Binder {
         if (mAcViewModelMap.size() == 0) {
             mAcViewModelMap.put("10001", "com.example.acviewchange.acview.AcView10001.AcViewModel");
             mAcViewModelMap.put("28a02", "com.example.acviewchange.acview.AcView28a02.AcView28a02Model");
+            mAcViewModelMap.put("828214", "com.example.acviewchange.acview.AcView828214.AcView828214Model");
+            mAcViewModelMap.put("981904", "com.example.acviewchange.acview.AcView981904.AcView981904Model");
         }
         return mAcViewModelMap;
     }

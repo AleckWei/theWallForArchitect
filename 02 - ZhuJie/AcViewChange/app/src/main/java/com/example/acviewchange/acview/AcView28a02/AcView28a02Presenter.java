@@ -1,5 +1,7 @@
 package com.example.acviewchange.acview.AcView28a02;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.acviewchange.acview.AcViewBasePresenter;
@@ -21,6 +23,7 @@ public class AcView28a02Presenter extends AcViewBasePresenter<Integer> {
 
     @Override
     public void sendPowCmd() {
+        Log.d("wwj", "28a02的pre");
         iView.setLoading(true);
         model.sendPowCmd(new OnRequestListener<Integer>() {
             @Override

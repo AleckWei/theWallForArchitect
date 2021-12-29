@@ -1,5 +1,6 @@
 package com.example.acviewchange.presenter;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -26,7 +27,7 @@ public class MainPresenter {
     private final UpdateViewListener mListener
             = new UpdateViewListener() {
         @Override
-        public void convert(@NonNull View rootView, @NonNull ItemBean itemData) {
+        public void convert(@NonNull View rootView, @NonNull ItemBean itemData, int position) {
             boolean isAdd = false;
             IPluginView viewItem = null;
             for (int i = 0; i < ((FrameLayout) rootView).getChildCount(); i++) {
@@ -41,6 +42,7 @@ public class MainPresenter {
                 viewItem = acView;
                 ((FrameLayout) rootView).addView(acView);
             }
+
             viewItem.setState(itemData);
         }
     };

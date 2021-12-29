@@ -15,6 +15,7 @@ public class AcViewPresenter extends AcViewBasePresenter<Integer> {
     }
 
     public void sendPowCmd() {
+        Log.d("wwj", "通用的pre");
         iView.setLoading(true);
         model.sendPowCmd(new OnRequestListener<Integer>() {
             @Override

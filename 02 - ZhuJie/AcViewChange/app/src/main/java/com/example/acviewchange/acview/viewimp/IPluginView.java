@@ -1,5 +1,7 @@
 package com.example.acviewchange.acview.viewimp;
 
+import android.content.Context;
+
 import com.example.acviewchange.acview.databean.ItemBean;
 
 public interface IPluginView {
@@ -18,4 +20,5 @@ public interface IPluginView {
      */
     void showWrongTips(String tips);
 
+    Context getContext();
 }

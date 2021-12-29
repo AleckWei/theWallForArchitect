@@ -2,3 +2,4 @@ rootProject.name = "AcViewChange"
 include ':app'
 include ':annotation'
 include ':annotationCompiler'
+include ':common'

@@ -22,7 +22,8 @@ import com.example.acviewchange.acview.viewimp.IPluginView;
 public class AcView extends LinearLayout implements View.OnClickListener, IPluginView {
 
     private static final int HIDE_TIPS = 0;
-    private final String mid;
+    private String mid;
+    public int index;
 
     private TextView tvDeviceName, tvDeviceState, tvSendingCmd;
 
@@ -101,6 +102,8 @@ public class AcView extends LinearLayout implements View.OnClickListener, IPlugi
     public void setState(ItemBean data) {
         tvDeviceName.setText(data.getDeviceName());
         tvDeviceState.setText(data.getDeviceState() == 1 ? "在线" : "离线");
+        mid = data.getMid();
+        initData();
         if (data.getPow() == 1) {
             showPowOnView();
         } else {

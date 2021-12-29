@@ -8,6 +8,6 @@ import com.example.acviewchange.acview.databean.ItemBean;
 
 public interface UpdateViewListener {
 
-    void convert(@NonNull View rootView, @NonNull ItemBean itemData);
+    void convert(@NonNull View rootView, @NonNull ItemBean itemData, int position);
 
 }

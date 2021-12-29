@@ -35,7 +35,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeItemViewHolder> {
     public void onBindViewHolder(@NonNull HomeItemViewHolder holder, int position) {
 //        TextView tvBgContent = holder.itemView.findViewById(R.id.tv_bg_content);
 //        tvBgContent.setText(mData.get(position).getContent());
-        mListener.convert(holder.itemView, mData.get(position));
+        mListener.convert(holder.itemView, mData.get(position), position);
     }
 
     @Override

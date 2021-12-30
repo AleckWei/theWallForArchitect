@@ -1,0 +1,24 @@
+在代码完成编译之后，向编译过的class文件字节码注入一些我们需要的字节码
+称之为 字节码插桩 技术
+
+使用场景：
+    1.记录启动时间
+    2.热修复 (如 Tinker)
+    3.性能优化工具 (systrace)
+    4....
+
+ASM
+    操作Java字节码的框架，按照Class文件的格式，解析，
+    修改，生成Class文件，可以动态生成或者增强现有类的功能。
+    // 正如Gson操作json的框架
+
+ASM 官网 https://asm.ow2.io/index.html
+
+1. 引入：
+在模块当中写入(仅在test包中生效)
+    testImplementation 'org.ow2.asm:asm:7.1'
+    testImplementation 'org.ow2:asm-commons:7.1'
+
+2. 准备待插桩的Class
+
+3. 编码实现

@@ -5,6 +5,7 @@ buildscript {
             url 'http://localhost:8081/artifactory/android_group/'
 //            url 'http://localhost:8081/artifactory/group_android/'
         }
+        maven { url  'https://maven.aliyun.com/repository/central' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.2'
@@ -20,6 +21,7 @@ allprojects {
             url 'http://localhost:8081/artifactory/android_group/'
 //            url 'http://localhost:8081/artifactory/group_android/'
         }
+        maven { url  'https://maven.aliyun.com/repository/central' }
     }
 }
 

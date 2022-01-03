@@ -17,7 +17,7 @@ ASM 官网 https://asm.ow2.io/index.html
 1. 引入：
 在模块当中写入(仅在test包中生效)
     testImplementation 'org.ow2.asm:asm:7.1'
-    testImplementation 'org.ow2:asm-commons:7.1'
+    testImplementation 'org.ow2.asm:asm-commons:7.1'
 
 2. 准备待插桩的Class
 

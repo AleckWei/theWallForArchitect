@@ -1,6 +1,7 @@
 package com.example.zhujiestub;
 
 import org.junit.Test;
+import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
@@ -81,9 +82,20 @@ public class ASMUnitTest {
     static class MyMethodVisitor extends AdviceAdapter {
 
         private int startTimeIndex;
+        private boolean isTargetMethod = false;
 
-        protected MyMethodVisitor(int api, MethodVisitor methodVisitor, int access, String name, String descriptor) {
+        protected MyMethodVisitor(int api, MethodVisitor methodVisitor,
+                                  int access, String name, String descriptor) {
             super(api, methodVisitor, access, name, descriptor);
+        }
+
+        @Override
+        public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
+            System.out.println(getName() + " : " + descriptor);
+            if (descriptor.equals("Lcom/example/zhujiestub/ASMTest;")) {
+                isTargetMethod = true;
+            }
+            return super.visitAnnotation(descriptor, visible);
         }
 
         /**
@@ -93,6 +105,9 @@ public class ASMUnitTest {
         @Override
         protected void onMethodEnter() {
             super.onMethodEnter();
+            if (!isTargetMethod) {
+                return;
+            }
             // 插入 long startTime = System.currentTimeMillis();
             // 这里要涉及方法签名的知识,如果是普通的类，则需要要在路径前加一个L
             // new Method,指的是调用对应类中的方法，参数一是方法名，参数二是方法签名
@@ -114,6 +129,9 @@ public class ASMUnitTest {
         @Override
         protected void onMethodExit(int opcode) {
             super.onMethodExit(opcode);
+            if (!isTargetMethod) {
+                return;
+            }
             // 插入 long endTime = System.currentTimeMillis();
             // System.out.println("execute: " + (endTime - startTime) + "ms.");
 

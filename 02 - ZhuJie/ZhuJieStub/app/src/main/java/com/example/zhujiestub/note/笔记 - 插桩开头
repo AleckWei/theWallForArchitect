@@ -22,3 +22,49 @@ ASM 官网 https://asm.ow2.io/index.html
 2. 准备待插桩的Class
 
 3. 编码实现
+
+如何在android中实现？
+要解决下面3个问题：
+    1）如何获得所有的class？
+    2）Android打包流程
+    3）其他场景
+
+    这里就要从安卓的打包流程入手了
+    Application resource -> aapt(把各个对应的文件生成一个id) -> R.java
+    Application source code ->
+    aidl Files -> aidl(aidl文件打包工具) ->
+
+    以上3个代码来源，都会来到一个地方： Java Compiler，生成.class 文件
+    此时就是插桩的时机
+
+    打包成dex -> ... -> apk 文件
+
+    那么这里就要借助gradle开发 和 transform 帮助我们进行进行自定义的插桩开发
+
+插桩和apt的区别
+    apt
+        是基于java，
+        生成新的java类
+        生成出来的java类需要手动使用
+        侵入性，会干预写代码的过程（有好有坏）
+    插桩
+        是基于class，修改/生成class
+        可以修改原本的class，对原本的class进行加强
+        无侵入性
+        eg：无侵入性的埋点
+            热修复（tinker）
+
+
+CLASS_ISPREVERIFIED：表示这个类与它所有引用的类（B、C、D等）都在同一个dex中
+当另一个dex文件中，有另一个B存在时，这个A的标记就会发生冲突
+
+类加载验证失败崩溃
+
+A类不打上CLASS_ISPREVERIFIED的方法：
+    写一个C类，另外打包到hack.dex包中
+    让A引用C即可
+
+此时再使用B修复包时（和A类不在同一个dex文件） 就不会因为CLASS_ISPREVERIFIED导致崩溃
+并且，所有的类，都要直接引用一下C类
+
+那么，此时使用插桩就可以很好的解决这个所有类都要引入C类的问题

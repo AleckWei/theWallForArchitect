@@ -22,8 +22,8 @@ public class UserThreadLocal {
             threads[i] = new Thread(new TestThread(i));
         }
 
-        for (int i = 0; i < threads.length; i++) {
-            threads[i].start();
+        for (Thread thread : threads) {
+            thread.start();
         }
     }
 
